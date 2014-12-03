@@ -49,7 +49,8 @@ OTHER_FILES = qmldir \
     qml/TitleBar.qml \
     qml/UpdateDialog.qml \
     README.md \
-    components.qmltypes
+    components.qmltypes \
+    components.pri
 
 qmlfiles.path = $$[QT_INSTALL_QML]/$$replace(uri, \\., /)/qml
 qmlfiles.files += $$files(qml/*)

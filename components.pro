@@ -72,3 +72,8 @@ unix {
     target.path = $$installPath
     INSTALLS += target qmldir qmlfiles plugininfo
 }
+
+#check for the models folder from git submodule
+exists("Models"){
+    include(Models/Models.pri)
+}

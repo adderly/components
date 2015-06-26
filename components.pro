@@ -16,7 +16,7 @@ android {
 }
 
 CONFIG += qt plugin
-
+#DESTDIR = components
 TARGET = $$qtLibraryTarget($$TARGET)
 uri = com.iktwo.components
 
@@ -66,8 +66,9 @@ plugininfo.files += components.qmltypes
     PRE_TARGETDEPS += $$copy_qmldir.target
 }
 
-unix {
+linux {
     installPath = $$[QT_INSTALL_QML]/$$replace(uri, \\., /)
+    message($$installPath)
     qmldir.files += qmldir
     qmldir.path = $$installPath
     target.path = $$installPath

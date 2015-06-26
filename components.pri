@@ -1,51 +1,60 @@
-CONFIG += qt plugin
+components_qml_folder.source = ../third_party/components/qml
+components_qml_folder.target = .
+DEPLOYMENTFOLDERS += components_qml_folder
 
 android {
     QT += androidextras
 
     SOURCES += \
-        src/jniutils.cpp
+        $$PWD/src/jniutils.cpp
 
     HEADERS += \
-        src/jniutils.h
+        $$PWD/src/jniutils.h
 
-    CONFIG -= android_install
+#    CONFIG -= android_install
 }
 
-
-SOURCES += \
-    src/components_plugin.cpp \
-    src/screenvalues.cpp \
-    src/updatechecker.cpp \
-    src/connectivitymanager.cpp \
-    src/packagemanager.cpp \
-    src/downloadmanager.cpp \
-    src/applicationinfo.cpp
+#CONFIG += staticlib
 
 HEADERS += \
-    src/components_plugin.h \
-    src/screenvalues.h \
-    src/updatechecker.h \
-    src/connectivitymanager.h \
-    src/packagemanager.h \
-    src/downloadmanager.h \
-    src/applicationinfo.h
+    $$PWD/src/components_plugin.h \
+    $$PWD/src/screenvalues.h \
+    $$PWD/src/updatechecker.h \
+    $$PWD/src/connectivitymanager.h \
+    $$PWD/src/packagemanager.h \
+    $$PWD/src/downloadmanager.h \
+    $$PWD/src/applicationinfo.h
 
-OTHER_FILES = qmldir \
-    qml/Dialog.qml \
-    qml/FlatButtonStyle.qml \
-    qml/ImageButton.qml \
-    qml/ItemHighlighter.qml \
-    qml/Page.qml \
-    qml/SubtractMask.qml \
-    qml/Theme.qml \
-    qml/TitleBar.qml \
-    qml/UpdateDialog.qml \
-    README.md \
-    components.qmltypes
+SOURCES += \
+    $$PWD/src/components_plugin.cpp \
+    $$PWD/src/screenvalues.cpp \
+    $$PWD/src/updatechecker.cpp \
+    $$PWD/src/connectivitymanager.cpp \
+    $$PWD/src/packagemanager.cpp \
+    $$PWD/src/downloadmanager.cpp \
+    $$PWD/src/applicationinfo.cpp
+
+
+OTHER_FILES = $$PWD/qmldir \
+    $$PWD/qml/Dialog.qml \
+    $$PWD/qml/FlatButtonStyle.qml \
+    $$PWD/qml/ImageButton.qml \
+    $$PWD/qml/ItemHighlighter.qml \
+    $$PWD/qml/Page.qml \
+    $$PWD/qml/SubtractMask.qml \
+    $$PWD/qml/Theme.qml \
+    $$PWD/qml/TitleBar.qml \
+    $$PWD/qml/UpdateDialog.qml \
+    $$PWD/README.md \
+    $$PWD/components.qmltypes
 
 #check for the models folder from git submodule
-exists("Models"){
-    include(Models/Models.pri)
+contains(DEFINES,EXT_MODELS){
+    ##checks if the Model folder exists
+    exists("Models"){
+        include(Models/Models.pri)
+    }
 }
 
+INCLUDEPATH += $$PWD/src
+INCLUDEPATH += $$PWD
